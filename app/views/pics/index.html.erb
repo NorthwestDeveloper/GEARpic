@@ -6,7 +6,7 @@
         <%= link_to image_tag(pic.image.url(:medium)), pic %>
           <div class="panel-body">
             <p><%= pic.description %></p>
-            <p><strong><%= pic.user.email if pic.user %></strong></p>
+            <p><strong><%= pic.user.name if pic.user %></strong></p>
               <% if pic.user == current_user %>
                 <div class="actions">
                   <%= link_to edit_pic_path(pic) do %>
