@@ -6,7 +6,7 @@ class PicsController < ApplicationController
   respond_to :html
 
   def index
-    @pics = Pic.all
+    @pics = Pic.all.order("created_at DESC")
     respond_with(@pics)
   end
 
