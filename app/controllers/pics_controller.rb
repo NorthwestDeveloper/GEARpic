@@ -6,7 +6,7 @@ class PicsController < ApplicationController
   respond_to :html
 
   def index
-    @pics = Pic.all.order("created_at DESC")
+    @pics = Pic.all.order("created_at DESC").paginate(:page => params[:page], :per_page => 1)
     respond_with(@pics)
   end
 
