@@ -1,16 +1,23 @@
+<%= render 'pages/home' unless user_signed_in? %>
+
 <div id="pics" class="transitions-enabled">
   <% @pics.each do |pic| %>
      <div class="box panel panel-default">
-        <%= image_tag pic.image.url(:medium) %>
+        <%= link_to image_tag(pic.image.url(:medium)), pic %>
           <div class="panel-body">
-            <%= pic.description %>
-            <%= pic.user.email if pic.user %>
-            <%= link_to 'Show', pic %>
-            <% if pic.user == current_user %>
-              <%= link_to 'Edit', edit_pic_path(pic) %>
-              <%= link_to 'Destroy', pic, method: :delete, data: { confirm: 'Are you sure?' } %>
-            <% end %>
-         </div>
+            <p><%= pic.description %></p>
+            <p><strong><%= pic.user.email if pic.user %></strong></p>
+              <% if pic.user == current_user %>
+                <div class="actions">
+                  <%= link_to edit_pic_path(pic) do %>
+                    <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>Edit
+                  <% end %>
+                  <%= link_to pic, method: :delete, data: { confirm: 'Are you sure?' } do %>
+                    <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>Delete
+                  <% end %>
+                </div>
+              <% end %>
+           </div>   
      </div>
   <% end %>
 </div>
