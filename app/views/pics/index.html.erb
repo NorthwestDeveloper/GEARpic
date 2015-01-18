@@ -8,7 +8,7 @@
             <p><%= pic.description %></p>
             <p><strong><%= pic.user.name if pic.user %></strong></p>
               
-              <% if current_user && (pic.user == current_user) %>
+              <% if current_user && @pic.user == current_user %>
                 <div class="actions">
                   <%= link_to edit_pic_path(pic) do %>
                     <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>Edit
